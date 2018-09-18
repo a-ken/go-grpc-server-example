@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message Task {
+    int32 id = 1;
+    string title = 2;
+    string content = 3;
+    string from = 4;
+    string to = 5;
+    int64 startDate = 6;
+    int64 endDate = 7;
+}
+
+message Tasks {
+    repeated Task tasks = 1;
+}
+
+message FindOneParams {
+    int32 id = 1;
+}
+
+message FindAllParams {}
+
+service TaskService {
+    rpc FindOne(FindOneParams) returns (Task);
+    rpc FindAll(FindAllParams) returns (Tasks);
+}
